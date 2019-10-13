@@ -1,0 +1,14 @@
+/* :hover */
+.Sidebar__item:hover {
+  background-color: rgba(40, 84, 115, 0.1);
+}
+
+.Sidebar__item a {
+  display: flex;
+  align-items: center;
+  padding: 7px 0 7px 40px;
+  font-size: 15px;
+  line-height: 18px;
+  text-transform: capitalize;
+  color: var(--sidebar-cr);
+}

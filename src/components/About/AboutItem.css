@@ -1,0 +1,18 @@
+.About__wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.About__wrapper span {
+  min-width: 56%;
+  color: var(--about-span-cr);
+}
+
+.About__wrapper a {
+  color: var(--sidebar-cr);
+}
+
+.About__wrapper a:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}

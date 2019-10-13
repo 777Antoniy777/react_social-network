@@ -1,0 +1,16 @@
+.Main {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.Main .site-wrapper {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-column-gap: 30px;
+}
+
+.Main__inner-wrapper {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-column-gap: 30px;
+}

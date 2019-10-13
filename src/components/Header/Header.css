@@ -1,0 +1,14 @@
+.Header {
+  width: 100%;
+  min-height: 42px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-family: var(--OpenSansCondensed);
+  background-color: var(--header-bg);
+}
+
+.Header__nav {
+  display: flex;
+  align-items: center;
+  min-height: inherit;
+}

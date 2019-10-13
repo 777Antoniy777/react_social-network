@@ -1,0 +1,25 @@
+.Preview__item {
+  display: flex;
+  align-items: center;
+  min-height: inherit;
+  padding: 5px 15px;
+  border-right: 1px solid var(--preview-cr);
+}
+
+.Preview__item:first-child {
+  border-left: 1px solid var(--preview-cr);
+}
+
+.Preview__item a {
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--preview-cr);
+}
+
+.Preview__item span {
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: var(--OpenSans);
+  color: grey;
+}

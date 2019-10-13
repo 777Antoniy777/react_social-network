@@ -1,0 +1,25 @@
+:root {
+  /* color */
+  --b: #000000;
+  --w: #ffffff;
+  --preview-cr: #385898;
+  --sidebar-cr: #285473;
+  --about-span-cr: grey;
+
+  /* bg */
+  --main-bg: #e9ebee;
+  --header-bg: #4267b2;
+
+  /* fonts */
+  --OpenSans: "OpenSans", "Arial", sans-serif;
+  --OpenSansCondensed: "OpenSansCondensed", "Arial", sans-serif;
+
+  /* @media */
+  --media-dt: 1023px;
+  --media-tb: 767px;
+  --media-mb: 320px;
+
+  /* retina */
+  --retina-dpi: 144dpi;
+  --retina-dppx: 1.5dppx;
+}
