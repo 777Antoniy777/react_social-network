@@ -12,3 +12,8 @@
   text-transform: capitalize;
   color: var(--sidebar-cr);
 }
+
+/* :active  */
+.Sidebar__item .active {
+  background-color: rgba(40, 84, 115, 0.1);
+}

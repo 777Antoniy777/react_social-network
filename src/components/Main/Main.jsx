@@ -1,45 +1,32 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './Main.css';
-import Preview from '../Preview/Preview';
 import Sidebar from '../Sidebar/Sidebar';
-import About from '../About/About';
-import PostField from '../PostField/PostField';
-import Posts from '../Posts/Posts';
+import Profile from '../general/Profile';
+import Dialogs from '../general/Dialogs';
 
-class Main extends React.Component {
+const Main = () => {
 
-  render() {
-    return (
+  return (
 
-      <main className="Main">
-        <div className="site-wrapper">
+    <main className="Main">
+      <div className="site-wrapper">
+        <Sidebar />
 
-          <Sidebar />
+        {/* <BrowserRouter> */}
 
-          <div className="Main__wrapper">
+          {/* Profile page */}
+          <Route exact path="/" component={Profile} />
 
-            <Preview />
+          {/* Dialogs page */}
+          <Route path="/dialogs" component={Dialogs} />
 
-            <div className="Main__inner-wrapper">
+        {/* </BrowserRouter> */}
 
-              <About />
+      </div>
+    </main>
 
-              <div className="Main__comment-wrapper">
-
-                <PostField />
-                <Posts />
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </main>
-
-    );
-  }
+  );
 }
 
 export default Main;

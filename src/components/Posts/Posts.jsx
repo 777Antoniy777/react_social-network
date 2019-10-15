@@ -2,25 +2,23 @@ import React from 'react';
 import './Posts.css';
 import PostsItem from './PostsItem';
 
-class Posts extends React.Component {
+const Posts = () => {
 
-  render() {
-    return (
+  return (
 
-      <section className="Posts">
-        <h2 className="visually-hidden">Posts</h2>
+    <section className="Posts">
+      <h2 className="visually-hidden">Posts</h2>
 
-        <ul className="Posts__list">
+      <ul className="Posts__list">
 
-          <PostsItem name="Anton Kuzmitsky" time="2 Mar at 10:26 am" message="I'm fine"/>
-          <PostsItem name="Anton Kuzmitsky" time="9 Mar at 10:26 am" message="I'm ok"/>
+        <PostsItem name="Anton Kuzmitsky" time="2 Mar at 10:26 am" message="I'm fine"/>
+        <PostsItem name="Anton Kuzmitsky" time="9 Mar at 10:26 am" message="I'm ok"/>
 
-        </ul>
+      </ul>
 
-      </section>
+    </section>
 
-    );
-  }
+  );
 }
 
 export default Posts;

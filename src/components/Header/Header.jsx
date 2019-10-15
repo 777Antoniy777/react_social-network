@@ -2,27 +2,25 @@ import React from 'react';
 import './Header.css';
 import logo from '../../img/svg/fb-logo.svg'
 
-class Header extends React.Component {
+const Header = () => {
 
-  render() {
-    return (
+  return (
 
-        <header className="Header">
-          <div className="site-wrapper">
+      <header className="Header">
+        <div className="site-wrapper">
 
-            <nav className="Header__nav">
+          <nav className="Header__nav">
 
-              <a href="#s">
-                <img className="Header__image" src={logo} width="28" height="28" alt="Logo facebook"/>
-              </a>
-              
-            </nav>
+            <a href="#s">
+              <img className="Header__image" src={ logo } width="28" height="28" alt="Logo facebook"/>
+            </a>
 
-          </div>
-        </header>
+          </nav>
 
-    );
-  }
+        </div>
+      </header>
+
+  );
 }
 
 export default Header;

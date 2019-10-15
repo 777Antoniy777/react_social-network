@@ -1,0 +1,29 @@
+.Messages {
+  background-color: var(--w);
+  border: 1px solid var(--dialogs-border-cr);
+  border-left: none;
+}
+
+.Messages__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid var(--dialogs-border-cr);
+}
+
+.Messages__header h3 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.Messages__header img {
+  width: 30px;
+  height: 30px;
+}
+
+.Messages__content {
+  padding: 20px 10px 20px 35px;
+}

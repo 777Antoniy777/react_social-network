@@ -2,29 +2,27 @@ import React from 'react';
 import './Sidebar.css';
 import SidebarNavItem from './SidebarNavItem';
 
-class Sidebar extends React.Component {
+const Sidebar = () => {
 
-  render() {
-    return (
+  return (
 
-      <aside className="Sidebar">
-        <nav className="Sidebar__nav">
-          <h2 className="visually-hidden">Main-navigation</h2>
+    <aside className="Sidebar">
+      <nav className="Sidebar__nav">
+        <h2 className="visually-hidden">Main-navigation</h2>
 
-          <ul className="Sidebar__list">
+        <ul className="Sidebar__list">
 
-            <SidebarNavItem cat="My profile" />
-            <SidebarNavItem cat="Friends" />
-            <SidebarNavItem cat="Messages" />
-            <SidebarNavItem cat="Photos" />
+          <SidebarNavItem link="/" exact="/" cat="My profile" />
+          <SidebarNavItem link="/friends" cat="Friends" />
+          <SidebarNavItem link="/dialogs" cat="Messages" />
+          <SidebarNavItem link="/photos" cat="Photos" />
 
-          </ul>
+        </ul>
 
-        </nav>
-      </aside>
+      </nav>
+    </aside>
 
-    );
-  }
+  );
 }
 
 export default Sidebar;

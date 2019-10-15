@@ -10,6 +10,7 @@
   padding-left: 20px;
   padding-bottom: 20px;
   background-image: url("../../img/preview-bg.jpg");
+  background-color: var(--b);
   background-size: 100% 315px;
   background-repeat: no-repeat;
 }

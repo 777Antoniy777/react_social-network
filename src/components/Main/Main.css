@@ -1,6 +1,5 @@
 .Main {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 40px 20px 40px
 }
 
 .Main .site-wrapper {
@@ -9,8 +8,16 @@
   grid-column-gap: 30px;
 }
 
-.Main__inner-wrapper {
+/* Profile */
+.Main__about-wrapper {
   display: grid;
   grid-template-columns: 380px 1fr;
   grid-column-gap: 30px;
+}
+
+/* Messages */
+.Main__messages-wrapper {
+  display: grid;
+  grid-template-columns: 316px 1fr;
+  padding-top: 20px;
 }

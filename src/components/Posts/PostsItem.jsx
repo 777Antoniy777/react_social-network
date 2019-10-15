@@ -1,39 +1,37 @@
 import React from 'react';
 import './PostsItem.css';
-import img from '../../img/avatar.png';
+import img from '../../img/avatar-1.png';
 
-class PostsItem extends React.Component {
+const PostsItem = (props) => {
 
-  render() {
-    return (
+  return (
 
-      <li className="Posts__item">
+    <li className="Posts__item">
 
-        <div className="Posts__image-wrapper">
+      <div className="Posts__image-wrapper">
+        <a href="#s">
+          <img className="Posts__image" src={ img } width="40" height="40" alt="My avatar"/>
+        </a>
+
+        <div className="Posts__name-wrapper">
+
           <a href="#s">
-            <img className="Posts__image" src={img} width="40" height="40" alt="My avatar"/>
+            <p>{ props.name }</p>
           </a>
 
-          <div className="Posts__name-wrapper">
-
-            <a href="#s">
-              <p>{ this.props.name }</p>
-            </a>
-
-            <a href="#s">
-              <span>{ this.props.time }</span>
-            </a>
+          <a href="#s">
+            <span>{ props.time }</span>
+          </a>
 
 
-          </div>
         </div>
+      </div>
 
-        <p className="Posts__description">{ this.props.message }</p>
+      <p className="Posts__description">{ props.message }</p>
 
-      </li>
+    </li>
 
-    );
-  }
+  );
 }
 
 export default PostsItem;

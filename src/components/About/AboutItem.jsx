@@ -1,21 +1,19 @@
 import React from 'react';
 import './AboutItem.css';
 
-class AboutItem extends React.Component {
+const AboutItem = (props) => {
 
-  render() {
-    return (
+  return (
 
-      <div className="About__wrapper">
-        <span>{ this.props.cat }</span>
+    <div className="About__wrapper">
+      <span>{ props.cat }</span>
 
-        <a href="#s">
-          { this.props.val }
-        </a>
-      </div>
+      <a href="#s">
+        { props.val }
+      </a>
+    </div>
 
-    );
-  }
+  );
 }
 
 export default AboutItem;

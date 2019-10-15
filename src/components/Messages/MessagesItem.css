@@ -1,0 +1,39 @@
+.Messages__item {
+  display: flex;
+}
+
+.Messages__item-image {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+.Messages__item-wrapper a {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  padding-bottom: 5px;
+  color: var(--message-cr);
+}
+
+/* :hover */
+.Messages__item-wrapper a:hover {
+  text-decoration: underline;
+}
+
+.Messages__item-list {
+  margin: 0;
+  margin-bottom: 25px;
+  padding: 0;
+  list-style: none;
+}
+
+.Messages__item-list li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.Messages__item-list li:last-child {
+  margin-bottom: 0;
+}

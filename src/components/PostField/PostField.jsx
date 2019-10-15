@@ -1,31 +1,29 @@
 import React from 'react';
 import './PostField.css';
-import img from '../../img/avatar.png';
+import img from '../../img/avatar-1.png';
 
-class PostField extends React.Component {
+const PostField = () => {
 
-  render() {
-    return (
+  return (
 
-      <section className="PostField">
-        <h2 className="visually-hidden">Write the post</h2>
+    <section className="PostField">
+      <h2 className="visually-hidden">Write the post</h2>
 
-        <a href="#s">
-          <img className="PostField__image" src={img} width="28" height="28" alt="My avatar"/>
-        </a>
+      <a href="#s">
+        <img className="PostField__image" src={ img } width="28" height="28" alt="My avatar"/>
+      </a>
 
-        <form action="#s" method="POST">
+      <form action="#s" method="POST">
 
-          <textarea name="post" placeholder="What's new?"></textarea>
+        <textarea name="post" placeholder="What's new?"></textarea>
 
-          <button className="PostField__button PostField__button--submit" type="submit">Post</button>
+        <button className="PostField__button PostField__button--submit" type="submit">Post</button>
 
-        </form>
+      </form>
 
-      </section>
+    </section>
 
-    );
-  }
+  );
 }
 
 export default PostField;

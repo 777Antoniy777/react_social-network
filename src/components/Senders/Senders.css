@@ -1,0 +1,11 @@
+.Senders {
+  background-color: var(--w);
+}
+
+.Senders__list {
+  height: 88vh;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--dialogs-border-cr);
+  list-style: none;
+}
