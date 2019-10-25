@@ -1,6 +1,6 @@
 import React from 'react';
 import './Senders.css';
-import DialogsItem from './SendersItem';
+import SendersItem from './SendersItem';
 
 const Senders = () => {
 
@@ -11,9 +11,21 @@ const Senders = () => {
 
       <ul className="Senders__list">
 
-        <DialogsItem src={require("../../img/avatar-2.jpg")} user="Mikhail Kovalyov"/>
-        <DialogsItem src={require("../../img/avatar-3.jpg")} user="Lenochka Morozova"/>
-        <DialogsItem src={require("../../img/avatar-4.png")} user="Dmitry Marusov"/>
+        <SendersItem
+          src={require("../../img/avatar-2.jpg")}
+          user="Mikhail Kovalyov"
+          link="dialogs/id1"
+        />
+        <SendersItem
+          src={require("../../img/avatar-3.jpg")}
+          user="Lenochka Morozova"
+          link="dialogs/id2"
+        />
+        <SendersItem
+          src={require("../../img/avatar-4.png")}
+          user="Dmitry Marusov"
+          link="dialogs/id3"
+        />
 
       </ul>
 

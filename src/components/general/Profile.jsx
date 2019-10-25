@@ -4,7 +4,7 @@ import About from '../About/About';
 import PostField from '../PostField/PostField';
 import Posts from '../Posts/Posts';
 
-const Profile = (props) => {
+const Profile = () => {
 
   return (
 

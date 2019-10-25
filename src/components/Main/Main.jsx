@@ -13,15 +13,11 @@ const Main = () => {
       <div className="site-wrapper">
         <Sidebar />
 
-        {/* <BrowserRouter> */}
-
           {/* Profile page */}
-          <Route exact path="/" component={Profile} />
+          <Route exact path="/" component={ Profile } />
 
           {/* Dialogs page */}
-          <Route path="/dialogs" component={Dialogs} />
-
-        {/* </BrowserRouter> */}
+          <Route path="/dialogs" component={ Dialogs } />
 
       </div>
     </main>

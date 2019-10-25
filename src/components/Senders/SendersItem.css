@@ -1,4 +1,4 @@
-.Senders__item {
+.Senders__item a {
   position: relative;
   display: flex;
   padding: 5px 10px 5px 10px;
@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.Senders__item::before {
+.Senders__item a::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -19,7 +19,7 @@
 }
 
 /* :hover */
-.Senders__item:hover::before {
+.Senders__item:hover a::before {
   width: 100%;
 }
 
