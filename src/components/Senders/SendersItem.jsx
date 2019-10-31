@@ -7,7 +7,7 @@ const SendersItem = (props) => {
   return (
 
     <li className="Senders__item">
-      <NavLink to={ props.link }>
+      <NavLink to={ props.link } >
 
         <img className="Senders__image" src={ props.src } width="46" height="46" alt={ props.user }/>
 

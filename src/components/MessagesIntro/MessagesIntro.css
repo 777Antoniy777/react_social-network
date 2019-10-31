@@ -1,0 +1,41 @@
+.MessagesIntro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--message-intro-cr);
+  background-color: var(--w);
+  border: 1px solid var(--dialogs-border-cr);
+  border-left: none;
+}
+
+.MessagesIntro__description {
+  position: relative;
+  padding-top: 86px;
+  text-align: center;
+}
+
+.MessagesIntro__description::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 69px;
+  height: 66px;
+  background-image: url("../../img/dialog-icon.png");
+  transform: translateX(-50%);
+}
+
+.MessagesIntro__description a {
+  display: block;
+  padding-top: 7px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--message-cr);
+}
+
+/* hover */
+.MessagesIntro__description a:hover {
+  text-decoration: underline;
+}

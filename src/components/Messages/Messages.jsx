@@ -43,8 +43,6 @@ const Messages = () => {
 
       </div>
 
-
-
     </section>
 
   );

@@ -12,7 +12,7 @@ const Sidebar = () => {
 
         <ul className="Sidebar__list">
 
-          <SidebarNavItem link="/" exact="/" cat="My profile" />
+          <SidebarNavItem exact link="/" cat="My profile" />
           <SidebarNavItem link="/friends" cat="Friends" />
           <SidebarNavItem link="/dialogs" cat="Messages" />
           <SidebarNavItem link="/photos" cat="Photos" />
