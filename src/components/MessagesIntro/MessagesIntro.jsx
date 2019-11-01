@@ -5,14 +5,14 @@ const MessagesIntro = () => {
 
   return (
 
-    <section className="MessagesIntro">
+    <div className="Messages__intro">
       <h2 className="visually-hidden">Intro messages</h2>
 
-      <p className="MessagesIntro__description">Please select a dialog or
+      <p className="Messages__intro-description">Please select a dialog or
         <a href="#s"> create a new one</a>
       </p>
 
-    </section>
+    </div>
 
   );
 }

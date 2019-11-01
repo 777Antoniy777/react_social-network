@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Profile from '../general/Profile';
 import Dialogs from '../general/Dialogs';
 
-const Main = () => {
+const Main = (props) => {
 
   return (
 
@@ -14,7 +14,8 @@ const Main = () => {
         <Sidebar />
 
           {/* Profile page */}
-          <Route exact path="/" component={ Profile } />
+          <Route exact path="/" component={ Profile } postsData={ props.postsData } />
+          {/* <Profile postsData={ props.postsData } /> */}
 
           {/* Dialogs page */}
           <Route path="/dialogs" component={ Dialogs } />

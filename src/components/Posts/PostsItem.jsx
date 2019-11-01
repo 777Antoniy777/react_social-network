@@ -1,6 +1,6 @@
 import React from 'react';
 import './PostsItem.css';
-import img from '../../img/avatar-1.png';
+// import img from '../../img/avatar-1.png';
 
 const PostsItem = (props) => {
 
@@ -10,7 +10,7 @@ const PostsItem = (props) => {
 
       <div className="Posts__image-wrapper">
         <a href="#s">
-          <img className="Posts__image" src={ img } width="40" height="40" alt="My avatar"/>
+          <img className="Posts__image" src={ props.avatar } width="40" height="40" alt={ props.name } />
         </a>
 
         <div className="Posts__name-wrapper">

@@ -1,6 +1,14 @@
 import React from 'react';
 import './MessagesItem.css';
 
+const Message = (props) => {
+  return (
+
+    <li className="Messages__item-list">{ props.mes }</li>
+
+  )
+}
+
 const MessagesItem = (props) => {
   let name = props.name.split(' ')[0];
 
@@ -16,8 +24,10 @@ const MessagesItem = (props) => {
         <a href="#s">{ name }</a>
 
         <ul className="Messages__item-list">
-          <li className="Messages__item-list">{ props.mes1 }</li>
-          <li className="Messages__item-list">{ props.mes2 }</li>
+          
+          <Message mes={ props.mes1 } />
+          <Message mes={ props.mes2 } />
+
         </ul>
 
       </div>

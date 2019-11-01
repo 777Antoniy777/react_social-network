@@ -4,9 +4,57 @@ import MessagesItem from './MessagesItem';
 
 const Messages = () => {
 
+  const MessagesData = [
+    {
+      id: 1,
+      name: 'Mikhail Kovalyov',
+      avatar: '../../img/avatar-2.jpg',
+      messages: [
+        {
+          id: 1,
+          test: 'Hi!',
+        },
+        {
+          id: 2,
+          test: 'How are you',
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Anton Kuzmitsky',
+      avatar: '../../img/avatar-1.jpg',
+      messages: [
+        {
+          id: 1,
+          test: 'Hi!',
+        },
+        {
+          id: 2,
+          test: 'fine. you?',
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: 'Mikhail Kovalyov',
+      avatar: '../../img/avatar-2.jpg',
+      messages: [
+        {
+          id: 1,
+          test: 'me too',
+        },
+        {
+          id: 2,
+          test: 'go to walk',
+        },
+      ],
+    },
+  ];
+
   return (
 
-    <section className="Messages">
+    <React.Fragment>
       <h2 className="visually-hidden">Messages</h2>
 
       <div className="Messages__header">
@@ -43,7 +91,7 @@ const Messages = () => {
 
       </div>
 
-    </section>
+    </React.Fragment>
 
   );
 }

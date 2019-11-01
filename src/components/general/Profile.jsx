@@ -4,7 +4,7 @@ import About from '../About/About';
 import PostField from '../PostField/PostField';
 import Posts from '../Posts/Posts';
 
-const Profile = () => {
+const Profile = (props) => {
 
   return (
 
@@ -16,7 +16,7 @@ const Profile = () => {
 
         <div className="Main__comment-wrapper">
           <PostField />
-          <Posts />
+          <Posts postsData={ props.postsData } />
         </div>
 
       </div>

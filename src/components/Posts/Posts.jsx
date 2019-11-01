@@ -2,7 +2,9 @@ import React from 'react';
 import './Posts.css';
 import PostsItem from './PostsItem';
 
-const Posts = () => {
+const Posts = (props) => {
+  const { postsData } = props;
+  console.log(postsData)
 
   return (
 
@@ -11,8 +13,23 @@ const Posts = () => {
 
       <ul className="Posts__list">
 
-        <PostsItem name="Anton Kuzmitsky" time="2 Mar at 10:26 am" message="I'm fine"/>
-        <PostsItem name="Anton Kuzmitsky" time="9 Mar at 10:26 am" message="I'm ok"/>
+        { props.postsData &&
+          props.postsData.map((elem) =>
+
+            <PostsItem
+              // properties
+              key={ elem.id }
+              name={ elem.name }
+              time={ elem.time }
+              avatar={ elem.avatar }
+              message={ elem.text }
+            />
+
+          )
+        }
+
+        {/* <PostsItem name="Anton Kuzmitsky" time="2 Mar at 10:26 am" message="I'm fine"/>
+        <PostsItem name="Anton Kuzmitsky" time="9 Mar at 10:26 am" message="I'm ok"/> */}
 
       </ul>
 
