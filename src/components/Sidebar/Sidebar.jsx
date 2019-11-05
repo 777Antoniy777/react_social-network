@@ -2,7 +2,8 @@ import React from 'react';
 import './Sidebar.css';
 import SidebarNavItem from './SidebarNavItem';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { sidebarCategories } = props;
 
   return (
 
@@ -12,10 +13,16 @@ const Sidebar = () => {
 
         <ul className="Sidebar__list">
 
-          <SidebarNavItem exact link="/" cat="My profile" />
-          <SidebarNavItem link="/friends" cat="Friends" />
-          <SidebarNavItem link="/dialogs" cat="Messages" />
-          <SidebarNavItem link="/photos" cat="Photos" />
+          { sidebarCategories &&
+            sidebarCategories.map((elem) =>
+
+              <SidebarNavItem
+                exact={ elem.exact } link={ elem.link }
+                cat={ elem.name }
+              />
+
+            )
+          }
 
         </ul>
 

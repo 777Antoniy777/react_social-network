@@ -5,38 +5,44 @@ import Senders from '../Senders/Senders';
 import Messages from '../Messages/Messages';
 import MessagesIntro from '../MessagesIntro/MessagesIntro';
 
-const Dialogs = () => {
-
-  const SendersData = [
-    {
-      id: 1,
-      name: 'Mikhail Kovalyov',
-      avatar: '../../img/avatar-2.jpg',
-    },
-    {
-      id: 2,
-      name: 'Lenochka Morozova',
-      avatar: '../../img/avatar-3.jpg',
-    },
-    {
-      id: 3,
-      name: 'Dmitry Marusov',
-      avatar: '../../img/avatar-4.jpg',
-    },
-  ];
+const Dialogs = (props) => {
+  const { sendersData } = props;
 
   return (
 
     <div className="Main__messages-wrapper">
-      <Senders />
+      <Senders
+        // properties
+        sendersData={ sendersData }
+
+        // handlers
+        onGetUserId={ props.onGetUserId }
+      />
 
       <section className="Messages">
 
         <Route exact path="/dialogs" component={ MessagesIntro } />
 
-        <Route path="/dialogs/id1" component={ Messages } />
-        <Route path="/dialogs/id2" />
-        <Route path="/dialogs/id3" />
+        { sendersData &&
+          sendersData.map((elem) =>
+
+          <Route
+            key={ elem.id }
+            path={`/dialogs/id${elem.id}`}
+            render={ () =>
+
+              <Messages
+                // properties
+                messagesData={ props.messagesData }
+                userDataObj={ props.userDataObj }
+                { ...props }
+              />
+
+            }
+          />
+
+          )
+        }
 
       </section>
 

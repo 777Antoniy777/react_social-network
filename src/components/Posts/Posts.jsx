@@ -4,7 +4,6 @@ import PostsItem from './PostsItem';
 
 const Posts = (props) => {
   const { postsData } = props;
-  console.log(postsData)
 
   return (
 
@@ -13,8 +12,8 @@ const Posts = (props) => {
 
       <ul className="Posts__list">
 
-        { props.postsData &&
-          props.postsData.map((elem) =>
+        { postsData &&
+          postsData.map((elem) =>
 
             <PostsItem
               // properties
@@ -27,9 +26,6 @@ const Posts = (props) => {
 
           )
         }
-
-        {/* <PostsItem name="Anton Kuzmitsky" time="2 Mar at 10:26 am" message="I'm fine"/>
-        <PostsItem name="Anton Kuzmitsky" time="9 Mar at 10:26 am" message="I'm ok"/> */}
 
       </ul>
 

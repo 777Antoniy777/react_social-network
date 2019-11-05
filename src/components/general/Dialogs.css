@@ -1,4 +1,6 @@
 .Messages {
+  display: flex;
+  flex-direction: column;
   background-color: var(--w);
   border: 1px solid var(--dialogs-border-cr);
   border-left: none;

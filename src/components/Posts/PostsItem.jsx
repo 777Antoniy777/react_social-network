@@ -1,8 +1,8 @@
 import React from 'react';
 import './PostsItem.css';
-// import img from '../../img/avatar-1.png';
 
 const PostsItem = (props) => {
+  const { avatar, name, time, message } = props;
 
   return (
 
@@ -10,24 +10,24 @@ const PostsItem = (props) => {
 
       <div className="Posts__image-wrapper">
         <a href="#s">
-          <img className="Posts__image" src={ props.avatar } width="40" height="40" alt={ props.name } />
+          <img className="Posts__image" src={ avatar } width="40" height="40" alt={ name } />
         </a>
 
         <div className="Posts__name-wrapper">
 
           <a href="#s">
-            <p>{ props.name }</p>
+            <p>{ name }</p>
           </a>
 
           <a href="#s">
-            <span>{ props.time }</span>
+            <span>{ time }</span>
           </a>
 
 
         </div>
       </div>
 
-      <p className="Posts__description">{ props.message }</p>
+      <p className="Posts__description">{ message }</p>
 
     </li>
 

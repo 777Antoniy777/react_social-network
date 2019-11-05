@@ -5,25 +5,62 @@ import Sidebar from '../Sidebar/Sidebar';
 import Profile from '../general/Profile';
 import Dialogs from '../general/Dialogs';
 
-const Main = (props) => {
+class Main extends React.Component {
+  state = {
+    userDataObj: null,
+  }
 
-  return (
+  onGetUserId = (userObj) => {
+    this.setState({
+      userDataObj: userObj,
+    });
+  }
 
-    <main className="Main">
-      <div className="site-wrapper">
-        <Sidebar />
+  render() {
+    return (
 
-          {/* Profile page */}
-          <Route exact path="/" component={ Profile } postsData={ props.postsData } />
-          {/* <Profile postsData={ props.postsData } /> */}
+      <main className="Main">
+        <div className="site-wrapper">
+          <Sidebar sidebarCategories={ this.props.sidebarCategories } />
 
-          {/* Dialogs page */}
-          <Route path="/dialogs" component={ Dialogs } />
+            {/* Profile page */}
+            <Route
+              exact path="/"
+              render={ () =>
 
-      </div>
-    </main>
+                <Profile
+                  // properties
+                  postsData={ this.props.postsData }
+                  { ...this.props }
+                />
 
-  );
+              }
+            />
+
+            {/* Dialogs page */}
+            <Route
+              path="/dialogs"
+              render={ () =>
+
+                <Dialogs
+                  // properties
+                  sendersData={ this.props.sendersData }
+                  messagesData={ this.props.messagesData }
+                  userDataObj={ this.state.userDataObj }
+                  { ...this.props }
+
+                  // handlers
+                  onGetUserId={ this.onGetUserId }
+                />
+
+              }
+            />
+
+        </div>
+      </main>
+
+    );
+  }
 }
 
 export default Main;

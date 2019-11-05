@@ -3,6 +3,10 @@
   margin-bottom: 20px;
 }
 
+.About__wrapper:last-child {
+  margin-bottom: 0;
+}
+
 .About__wrapper span {
   min-width: 56%;
   color: var(--about-span-cr);
