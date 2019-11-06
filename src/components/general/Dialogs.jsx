@@ -16,7 +16,7 @@ const Dialogs = (props) => {
         sendersData={ sendersData }
 
         // handlers
-        onGetUserId={ props.onGetUserId }
+        onGetSenderId={ props.onGetSenderId }
       />
 
       <section className="Messages">
@@ -33,8 +33,8 @@ const Dialogs = (props) => {
 
               <Messages
                 // properties
-                messagesData={ props.messagesData }
                 userDataObj={ props.userDataObj }
+                filteredSenderData={ props.filteredSenderData }
                 { ...props }
               />
 

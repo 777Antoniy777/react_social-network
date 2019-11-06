@@ -2,28 +2,49 @@ import React from 'react';
 import './PostField.css';
 import img from '../../img/avatar-1.png';
 
-const PostField = () => {
+class PostField extends React.Component {
+  state = {
+    textareaValue: '',
+  }
 
-  return (
+  onSetTextareaValue = (evt) => {
+    const target = evt.target;
 
-    <section className="PostField">
-      <h2 className="visually-hidden">Write the post</h2>
+    this.setState({
+      textareaValue: target.value,
+    });
+  }
 
-      <a href="#s">
-        <img className="PostField__image" src={ img } width="28" height="28" alt="My avatar"/>
-      </a>
+  addNewPost = (evt) => {
+    evt.preventDefault();
+    const { onSetNewPost } = this.props;
 
-      <form action="#s" method="POST">
+    onSetNewPost();
+  }
 
-        <textarea name="post" placeholder="What's new?"></textarea>
+  render() {
+    return (
 
-        <button className="PostField__button PostField__button--submit" type="submit">Post</button>
+      <section className="PostField">
+        <h2 className="visually-hidden">Write the post</h2>
 
-      </form>
+        <a href="#s">
+          <img className="PostField__image" src={ img } width="28" height="28" alt="My avatar"/>
+        </a>
 
-    </section>
+        <form action="#s" method="POST">
 
-  );
+          <textarea onInput={ this.onSetTextareaValue } name="post" placeholder="What's new?"></textarea>
+
+          {/* замени потом button */}
+          <button className="PostField__button PostField__button--submit" onClick={ this.addNewPost } type="button">Post</button>
+
+        </form>
+
+      </section>
+
+    );
+  }
 }
 
 export default PostField;

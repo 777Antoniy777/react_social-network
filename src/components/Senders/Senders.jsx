@@ -23,7 +23,7 @@ const Senders = (props) => {
               user={ elem.name}
 
               // handlers
-              onGetUserId={ props.onGetUserId }
+              onGetSenderId={ props.onGetSenderId }
             />
 
           )

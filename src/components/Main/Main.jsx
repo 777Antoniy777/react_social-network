@@ -8,11 +8,23 @@ import Dialogs from '../general/Dialogs';
 class Main extends React.Component {
   state = {
     userDataObj: null,
+    filteredSenderData: null
   }
 
-  onGetUserId = (userObj) => {
+  onGetSenderId = (userObj) => {
     this.setState({
       userDataObj: userObj,
+    }, this.filterSenderArr );
+  }
+
+  filterSenderArr() {
+    const filteredSenderArr = this.props.messagesData.filter((elem) => {
+      return elem.senderId === this.state.userDataObj.id;
+    });
+    const filteredSenderData = filteredSenderArr[0].userData;
+
+    this.setState({
+      filteredSenderData: filteredSenderData,
     });
   }
 
@@ -32,6 +44,9 @@ class Main extends React.Component {
                   // properties
                   postsData={ this.props.postsData }
                   { ...this.props }
+
+                  // handlers
+                  onSetNewPost={ this.props.onSetNewPost }
                 />
 
               }
@@ -45,12 +60,12 @@ class Main extends React.Component {
                 <Dialogs
                   // properties
                   sendersData={ this.props.sendersData }
-                  messagesData={ this.props.messagesData }
+                  filteredSenderData={ this.state.filteredSenderData }
                   userDataObj={ this.state.userDataObj }
                   { ...this.props }
 
                   // handlers
-                  onGetUserId={ this.onGetUserId }
+                  onGetSenderId={ this.onGetSenderId }
                 />
 
               }

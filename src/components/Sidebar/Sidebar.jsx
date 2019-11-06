@@ -17,6 +17,7 @@ const Sidebar = (props) => {
             sidebarCategories.map((elem) =>
 
               <SidebarNavItem
+                key={ elem.id }
                 exact={ elem.exact } link={ elem.link }
                 cat={ elem.name }
               />

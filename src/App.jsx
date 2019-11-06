@@ -7,21 +7,25 @@ class App extends React.Component {
   state = {
     sidebarCategories: [
       {
+        id: 1,
         name: 'My profile',
         link: '/',
         exact: true,
       },
       {
+        id: 2,
         name: 'Friends',
         link: '/friends',
         exact: false,
       },
       {
+        id: 3,
         name: 'Messages',
         link: '/dialogs',
         exact: false
       },
       {
+        id: 4,
         name: 'Photos',
         link: '/photos',
         exact: false,
@@ -62,7 +66,7 @@ class App extends React.Component {
     ],
     messagesData: [
       {
-        userId: 1,
+        senderId: 1,
         userData: [
           {
             id: 1,
@@ -116,7 +120,7 @@ class App extends React.Component {
         ],
       },
       {
-        userId: 2,
+        senderId: 2,
         userData: [
           {
             id: 1,
@@ -136,11 +140,33 @@ class App extends React.Component {
         ],
       },
       {
-        userId: 3,
+        senderId: 3,
         userData: null,
       },
     ],
   }
+
+  // TEST
+  componentDidUpdate(prevProps, prevState) {
+
+    if (this.state.postsData.length !== prevState.postsData.length) {
+      this.onSetNewPost();
+    }
+
+  }
+
+  onSetNewPost = () => {
+    const newPost = {
+      id: 3,
+      name: 'Anton Kuzmitsky',
+      avatar: 'avatars/avatar-1.png',
+      time: '9 Mar at 10:26 am',
+      text: 'I\'m ok',
+    };
+
+    this.state.postsData.push(newPost)
+  }
+  //
 
   render() {
     return (
@@ -154,6 +180,9 @@ class App extends React.Component {
           postsData={ this.state.postsData }
           sendersData={ this.state.sendersData }
           messagesData={ this.state.messagesData }
+
+          // handlers
+          onSetNewPost={ this.onSetNewPost }
         />
 
       </BrowserRouter>

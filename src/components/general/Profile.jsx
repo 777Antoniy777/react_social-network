@@ -15,7 +15,7 @@ const Profile = (props) => {
         <About />
 
         <div className="Main__comment-wrapper">
-          <PostField />
+          <PostField onSetNewPost={ props.onSetNewPost } />
           <Posts postsData={ props.postsData } />
         </div>
 

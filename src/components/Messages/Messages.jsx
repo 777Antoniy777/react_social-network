@@ -4,12 +4,7 @@ import MessagesItem from './MessagesItem';
 import MessagesEmpty from '../MessagesEmpty/MessagesEmpty';
 
 const Messages = (props) => {
-  const { messagesData, userDataObj } = props;
-
-  const filteredUserArr = messagesData.filter((elem) => {
-    return elem.userId === userDataObj.id;
-  });
-  const filteredUserData = filteredUserArr[0].userData;
+  const { userDataObj, filteredSenderData } = props;
 
   return (
 
@@ -29,12 +24,12 @@ const Messages = (props) => {
 
       <div className="Messages__content">
 
-        { !filteredUserData &&
+        { !filteredSenderData &&
           <MessagesEmpty />
         }
 
-        { filteredUserData &&
-          filteredUserData.map((elem) =>
+        { filteredSenderData &&
+          filteredSenderData.map((elem) =>
 
             <MessagesItem
               // properties

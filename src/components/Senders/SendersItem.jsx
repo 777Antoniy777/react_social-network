@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './SendersItem.css';
 
 const SendersItem = (props) => {
-  const { id, src, user, onGetUserId } = props;
+  const { id, src, user, onGetSenderId } = props;
 
   const obj = {
     id,
@@ -12,7 +12,7 @@ const SendersItem = (props) => {
   }
 
   function senderClickHandler() {
-    onGetUserId(obj);
+    onGetSenderId(obj);
   }
 
   return (
