@@ -3,7 +3,8 @@ import './Preview.css';
 import img from '../../img/avatar-1.png';
 import PreviewNavItem from './PreviewNavItem';
 
-const Preview = () => {
+const Preview = (props) => {
+  const { previewCategories } = props;
 
   return (
 
@@ -12,15 +13,26 @@ const Preview = () => {
         <div className="Preview__wrapper">
 
           <img className="Preview__image" src={ img } width="168" height="168" alt="My avatar"/>
-          <h1>Антон Кузьмицкий</h1>
+          <h1>Anton Kuzmitsky</h1>
 
         </div>
 
         <nav className="Preview__nav">
           <ul className="Preview__list">
 
-            <PreviewNavItem cat="Friends" amount="55"/>
-            <PreviewNavItem cat="Photos" amount="174"/>
+            { previewCategories &&
+              previewCategories.map((elem) =>
+
+                <PreviewNavItem
+                  // properties
+                  key={ elem.id }
+                  cat={ elem.name }
+                  link={ elem.link }
+                  amount={ elem.amount }
+                />
+
+              )
+            }
 
           </ul>
         </nav>

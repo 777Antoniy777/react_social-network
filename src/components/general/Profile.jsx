@@ -9,14 +9,23 @@ const Profile = (props) => {
   return (
 
     <div className="Main__profile-wrapper">
-      <Preview />
+      <Preview previewCategories={ props.previewCategories } />
 
       <div className="Main__about-wrapper">
-        <About />
+        <About profileData={ props.profileData } />
 
         <div className="Main__comment-wrapper">
-          <PostField onSetNewPost={ props.onSetNewPost } />
-          <Posts postsData={ props.postsData } />
+
+          <PostField
+            // handlers
+            onSetNewPostValue={ props.onSetNewPostValue }
+            onShowNewPostData={ props.onShowNewPostData }
+            onSetPostDate={ props.onSetPostDate }
+            onSetPostId={ props.onSetPostId }
+            onSetPostValue={ props.onSetPostValue }
+          />
+
+          <Posts newPostsData={ props.newPostsData } />
         </div>
 
       </div>

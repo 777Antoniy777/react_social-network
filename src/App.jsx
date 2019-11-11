@@ -31,12 +31,53 @@ class App extends React.Component {
         exact: false,
       },
     ],
+    previewCategories: [
+      {
+        id: 1,
+        name: 'Friends',
+        link: '/friends',
+        amount: 55,
+      },
+      {
+        id: 2,
+        name: 'Photos',
+        link: '/photos',
+        amount: 174,
+      },
+    ],
+    profileData: [
+      {
+        id: 1,
+        cat: 'Birthday:',
+        text: 'January 7, 1996',
+      },
+      {
+        id: 2,
+        cat: 'Current city:',
+        text: 'Omsk',
+      },
+      {
+        id: 3,
+        cat: 'Institution:',
+        text: 'ОмГТУ',
+      },
+      {
+        id: 4,
+        cat: 'Languages:',
+        text: 'Русский, English',
+      },
+      {
+        id: 5,
+        cat: 'Sister:',
+        text: 'Dasha Maslova',
+      },
+    ],
     postsData: [
       {
         id: 1,
         name: 'Anton Kuzmitsky',
         avatar: 'avatars/avatar-1.png',
-        time: '2 Mar at 10:26 am',
+        time: '8 Mar at 20:19 pm',
         text: 'I\'m fine',
       },
       {
@@ -146,28 +187,6 @@ class App extends React.Component {
     ],
   }
 
-  // TEST
-  componentDidUpdate(prevProps, prevState) {
-
-    if (this.state.postsData.length !== prevState.postsData.length) {
-      this.onSetNewPost();
-    }
-
-  }
-
-  onSetNewPost = () => {
-    const newPost = {
-      id: 3,
-      name: 'Anton Kuzmitsky',
-      avatar: 'avatars/avatar-1.png',
-      time: '9 Mar at 10:26 am',
-      text: 'I\'m ok',
-    };
-
-    this.state.postsData.push(newPost)
-  }
-  //
-
   render() {
     return (
 
@@ -177,12 +196,14 @@ class App extends React.Component {
         <Main
           // properties
           sidebarCategories={ this.state.sidebarCategories }
+          previewCategories={ this.state.previewCategories }
+          profileData={ this.state.profileData }
           postsData={ this.state.postsData }
           sendersData={ this.state.sendersData }
           messagesData={ this.state.messagesData }
 
           // handlers
-          onSetNewPost={ this.onSetNewPost }
+          onSetNewPostValue={ this.onSetNewPostValue }
         />
 
       </BrowserRouter>

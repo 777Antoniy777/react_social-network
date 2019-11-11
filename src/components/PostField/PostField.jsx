@@ -3,23 +3,18 @@ import './PostField.css';
 import img from '../../img/avatar-1.png';
 
 class PostField extends React.Component {
-  state = {
-    textareaValue: '',
-  }
-
-  onSetTextareaValue = (evt) => {
-    const target = evt.target;
-
-    this.setState({
-      textareaValue: target.value,
-    });
-  }
-
-  addNewPost = (evt) => {
+  addNewPostValues = (evt) => {
     evt.preventDefault();
-    const { onSetNewPost } = this.props;
+    const { onSetNewPostValue, onSetPostValue } = this.props;
 
-    onSetNewPost();
+    onSetNewPostValue(onSetPostValue, evt);
+  }
+
+  showNewPostsData = (evt) => {
+    evt.preventDefault();
+    const { onShowNewPostData, onSetPostId, onSetPostDate } = this.props;
+
+    onShowNewPostData(onSetPostId, onSetPostDate);
   }
 
   render() {
@@ -34,10 +29,11 @@ class PostField extends React.Component {
 
         <form action="#s" method="POST">
 
-          <textarea onInput={ this.onSetTextareaValue } name="post" placeholder="What's new?"></textarea>
+          <textarea onChange={ this.addNewPostValues } name="post" placeholder="What's new?"></textarea>
 
-          {/* замени потом button */}
-          <button className="PostField__button PostField__button--submit" onClick={ this.addNewPost } type="button">Post</button>
+          <button onClick={ this.showNewPostsData } className="PostField__button PostField__button--submit" type="submit">
+            Post
+          </button>
 
         </form>
 

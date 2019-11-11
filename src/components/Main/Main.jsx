@@ -8,7 +8,87 @@ import Dialogs from '../general/Dialogs';
 class Main extends React.Component {
   state = {
     userDataObj: null,
-    filteredSenderData: null
+    filteredSenderData: null,
+    newPostData: {
+      id: null,
+      name: 'Anton Kuzmitsky',
+      avatar: 'avatars/avatar-1.png',
+      time: '2 Mar at 10:26 am',
+      text: '',
+    },
+    newPostMes: '',
+    newPostsData: this.props.postsData,
+  }
+
+  onSetPostDate = () => {
+    const date = new Date();
+    const time = {};
+    const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    time.day = date.getDate();
+    time.month = date.getMonth();
+    time.hours = date.getHours();
+    time.minutes = date.getMinutes();
+
+    const renamedMonth = monthArr.find((elem, index) => {
+      if (index === time.month) return index;
+      return false;
+    })
+
+    let res = `${time.day} ${renamedMonth} at ${time.hours}:${time.minutes}`;
+    if (time.hours <= 12) {
+      res = `${res} am`;
+    } else {
+      res = `${res} pm`;
+    }
+
+    return res;
+  }
+
+  onSetPostId = () => {
+    const { newPostsData } = this.state;
+    const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
+
+    return lastPostId;
+  }
+
+  onSetPostValue = (evt) => {
+    const target = evt.target;
+    return target.value;
+  }
+
+  onSetNewPostValue = (mesVal, evt) => {
+    const mes = mesVal(evt);
+
+    this.setState({
+      newPostMes: mes,
+    });
+  }
+
+  onShowNewPostData = (idVal, dateVal) => {
+    const date = dateVal();
+    const id = idVal();
+
+    const newPostData = {
+      id: id,
+      name: 'Anton Kuzmitsky',
+      avatar: 'avatars/avatar-1.png',
+      time: date,
+      text: this.state.newPostMes,
+    };
+
+    this.setState({
+      newPostData: newPostData,
+    }, this.addNewPostsData);
+  }
+
+  addNewPostsData() {
+    let postsArr = this.state.newPostsData;
+
+    if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
+
+    this.setState({
+      newPostsData: postsArr,
+    });
   }
 
   onGetSenderId = (userObj) => {
@@ -42,11 +122,17 @@ class Main extends React.Component {
 
                 <Profile
                   // properties
-                  postsData={ this.props.postsData }
+                  newPostsData={ this.state.newPostsData }
+                  previewCategories={ this.props.previewCategories }
+                  profileData={ this.props.profileData }
                   { ...this.props }
 
                   // handlers
-                  onSetNewPost={ this.props.onSetNewPost }
+                  onSetNewPostValue={ this.onSetNewPostValue }
+                  onShowNewPostData={ this.onShowNewPostData }
+                  onSetPostDate={ this.onSetPostDate }
+                  onSetPostId={ this.onSetPostId }
+                  onSetPostValue={ this.onSetPostValue }
                 />
 
               }

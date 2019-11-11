@@ -1,15 +1,17 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './PreviewNavItem.css';
 
 const PreviewNavItem = (props) => {
+  const { cat, link, amount } = props;
 
   return (
 
     <li className="Preview__item">
-      <a href="#s">
-        { props.cat }
-        <span>{ props.amount }</span>
-      </a>
+      <NavLink to={ link }>
+        { cat }
+        <span>{ amount }</span>
+      </NavLink>
     </li>
 
   );
