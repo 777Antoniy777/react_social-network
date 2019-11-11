@@ -20,7 +20,7 @@ class Main extends React.Component {
     newPostsData: this.props.postsData,
   }
 
-  onSetPostDate = () => {
+  setPostDate = () => {
     const date = new Date();
     const time = {};
     const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -44,14 +44,14 @@ class Main extends React.Component {
     return res;
   }
 
-  onSetPostId = () => {
+  setPostId = () => {
     const { newPostsData } = this.state;
     const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
 
     return lastPostId;
   }
 
-  onSetPostValue = (evt) => {
+  setPostValue = (evt) => {
     const target = evt.target;
     return target.value;
   }
@@ -125,14 +125,15 @@ class Main extends React.Component {
                   newPostsData={ this.state.newPostsData }
                   previewCategories={ this.props.previewCategories }
                   profileData={ this.props.profileData }
+                  newPostMes={ this.state.newPostMes }
                   { ...this.props }
 
                   // handlers
                   onSetNewPostValue={ this.onSetNewPostValue }
                   onShowNewPostData={ this.onShowNewPostData }
-                  onSetPostDate={ this.onSetPostDate }
-                  onSetPostId={ this.onSetPostId }
-                  onSetPostValue={ this.onSetPostValue }
+                  setPostDate={ this.setPostDate }
+                  setPostId={ this.setPostId }
+                  setPostValue={ this.setPostValue }
                 />
 
               }

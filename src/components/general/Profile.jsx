@@ -17,12 +17,15 @@ const Profile = (props) => {
         <div className="Main__comment-wrapper">
 
           <PostField
+            // properties
+            newPostMes={ props.newPostMes }
+
             // handlers
             onSetNewPostValue={ props.onSetNewPostValue }
             onShowNewPostData={ props.onShowNewPostData }
-            onSetPostDate={ props.onSetPostDate }
-            onSetPostId={ props.onSetPostId }
-            onSetPostValue={ props.onSetPostValue }
+            setPostDate={ props.setPostDate }
+            setPostId={ props.setPostId }
+            setPostValue={ props.setPostValue }
           />
 
           <Posts newPostsData={ props.newPostsData } />

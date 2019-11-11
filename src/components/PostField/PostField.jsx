@@ -5,16 +5,16 @@ import img from '../../img/avatar-1.png';
 class PostField extends React.Component {
   addNewPostValues = (evt) => {
     evt.preventDefault();
-    const { onSetNewPostValue, onSetPostValue } = this.props;
+    const { onSetNewPostValue, setPostValue } = this.props;
 
-    onSetNewPostValue(onSetPostValue, evt);
+    onSetNewPostValue(setPostValue, evt);
   }
 
   showNewPostsData = (evt) => {
     evt.preventDefault();
-    const { onShowNewPostData, onSetPostId, onSetPostDate } = this.props;
+    const { onShowNewPostData, setPostId, setPostDate } = this.props;
 
-    onShowNewPostData(onSetPostId, onSetPostDate);
+    onShowNewPostData(setPostId, setPostDate);
   }
 
   render() {
@@ -29,7 +29,7 @@ class PostField extends React.Component {
 
         <form action="#s" method="POST">
 
-          <textarea onChange={ this.addNewPostValues } name="post" placeholder="What's new?"></textarea>
+          <textarea onChange={ this.addNewPostValues } value={ this.props.newPostMes } name="post" placeholder="What's new?"></textarea>
 
           <button onClick={ this.showNewPostsData } className="PostField__button PostField__button--submit" type="submit">
             Post
