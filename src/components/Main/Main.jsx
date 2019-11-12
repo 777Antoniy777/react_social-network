@@ -82,12 +82,13 @@ class Main extends React.Component {
   }
 
   addNewPostsData() {
-    let postsArr = this.state.newPostsData;
+    const postsArr = this.state.newPostsData;
 
     if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
 
     this.setState({
       newPostsData: postsArr,
+      newPostMes: '',
     });
   }
 
