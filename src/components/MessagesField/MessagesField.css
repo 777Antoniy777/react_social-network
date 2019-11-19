@@ -1,0 +1,49 @@
+.Messages__form-wrapper {
+  width: 100%;
+  padding: 20px 20px;
+  background-color: var(--messages-feld-bg);
+  border-top: 1px solid var(--dialogs-border-cr);
+}
+
+.Messages__form-wrapper form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+}
+
+.Messages__form-wrapper textarea {
+  width: 100%;
+  min-height: 36px;
+  max-height: 200px;
+  padding: 10px 10px 0px 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--b);
+  border: 1px solid var(--dialogs-border-cr);
+  border-radius: 5px;
+  resize: none;
+}
+
+.Messages__form-wrapper textarea::placeholder {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--about-span-cr);
+}
+
+.Messages__button--submit {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Messages__button--submit svg {
+  opacity: 0.7;
+}
+
+.Messages__button--submit:hover svg,
+.Messages__button--submit:active svg {
+  opacity: 1;
+}

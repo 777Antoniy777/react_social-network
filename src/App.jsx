@@ -182,7 +182,7 @@ class App extends React.Component {
       },
       {
         senderId: 3,
-        userData: null,
+        userData: [],
       },
     ],
   }

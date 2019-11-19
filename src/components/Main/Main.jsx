@@ -9,17 +9,15 @@ class Main extends React.Component {
   state = {
     userDataObj: null,
     filteredSenderData: null,
-    newPostData: {
-      id: null,
-      name: 'Anton Kuzmitsky',
-      avatar: 'avatars/avatar-1.png',
-      time: '2 Mar at 10:26 am',
-      text: '',
-    },
-    newPostMes: '',
+    // filteredMessagesData: null,
+    newPostData: {},
+    newBlockMessageData: {},
+    newMessageData: {},
     newPostsData: this.props.postsData,
+    newMessagesData: this.props.messagesData,
   }
 
+  // Posts
   setPostDate = () => {
     const date = new Date();
     const time = {};
@@ -27,7 +25,12 @@ class Main extends React.Component {
     time.day = date.getDate();
     time.month = date.getMonth();
     time.hours = date.getHours();
-    time.minutes = date.getMinutes();
+
+    if (date.getMinutes() >= 0 && date.getMinutes() <= 9) {
+      time.minutes = `0${date.getMinutes()}`;
+    } else {
+      time.minutes = date.getMinutes();
+    }
 
     const renamedMonth = monthArr.find((elem, index) => {
       if (index === time.month) return index;
@@ -51,20 +54,7 @@ class Main extends React.Component {
     return lastPostId;
   }
 
-  setPostValue = (evt) => {
-    const target = evt.target;
-    return target.value;
-  }
-
-  onSetNewPostValue = (mesVal, evt) => {
-    const mes = mesVal(evt);
-
-    this.setState({
-      newPostMes: mes,
-    });
-  }
-
-  onShowNewPostData = (idVal, dateVal) => {
+  onShowNewPostData = (idVal, dateVal, newPostMes) => {
     const date = dateVal();
     const id = idVal();
 
@@ -73,7 +63,7 @@ class Main extends React.Component {
       name: 'Anton Kuzmitsky',
       avatar: 'avatars/avatar-1.png',
       time: date,
-      text: this.state.newPostMes,
+      text: newPostMes,
     };
 
     this.setState({
@@ -88,10 +78,10 @@ class Main extends React.Component {
 
     this.setState({
       newPostsData: postsArr,
-      newPostMes: '',
     });
   }
 
+  // Messages
   onGetSenderId = (userObj) => {
     this.setState({
       userDataObj: userObj,
@@ -99,13 +89,75 @@ class Main extends React.Component {
   }
 
   filterSenderArr() {
-    const filteredSenderArr = this.props.messagesData.filter((elem) => {
+    const filteredSenderArr = this.state.newMessagesData.filter((elem) => {
       return elem.senderId === this.state.userDataObj.id;
     });
     const filteredSenderData = filteredSenderArr[0].userData;
 
     this.setState({
       filteredSenderData: filteredSenderData,
+    });
+  }
+
+  setBlockMessageId = () => {
+    const { filteredSenderData } = this.state;
+    let lastBlockMessageId;
+
+    if (filteredSenderData.length === 0) {
+      lastBlockMessageId = 1;
+      return lastBlockMessageId;
+    }
+
+    lastBlockMessageId = filteredSenderData[filteredSenderData.length - 1].id + 1;
+    return lastBlockMessageId;
+  }
+
+  onShowNewMessagesData = (idVal, mes) => {
+    const id = idVal();
+    let newBlockMessageData;
+
+    if (this.state.newBlockMessageData.messages.length >= 1) {
+      let testArr = this.state.newBlockMessageData.messages;
+      const testId = testArr[testArr - 1].id + 1;
+      testArr = testArr.push();
+
+      newBlockMessageData = {
+        id: id,
+        name: 'Anton Kuzmitsky',
+        avatar: '../../avatars/avatar-1.png',
+        messages: testArr,
+      };
+    } else {
+      newBlockMessageData = {
+        id: id,
+        name: 'Anton Kuzmitsky',
+        avatar: '../../avatars/avatar-1.png',
+        messages: [
+          {
+            id: 1,
+            message: mes,
+          },
+        ],
+      };
+
+      // this.setState({
+      //   newBlockMessageData: newBlockMessageData,
+      // }, this.addNewMessage);
+    }
+
+    this.setState({
+      newBlockMessageData: newBlockMessageData,
+    }, this.addNewMessage);
+
+  }
+
+  addNewMessage() {
+    const newMessagesArr = this.state.filteredSenderData;
+
+    if (this.state.newBlockMessageData.messages[this.state.newBlockMessageData.messages.length - 1].message !== '') newMessagesArr.push(this.state.newBlockMessageData);
+
+    this.setState({
+      filteredSenderData: newMessagesArr,
     });
   }
 
@@ -126,15 +178,11 @@ class Main extends React.Component {
                   newPostsData={ this.state.newPostsData }
                   previewCategories={ this.props.previewCategories }
                   profileData={ this.props.profileData }
-                  newPostMes={ this.state.newPostMes }
-                  { ...this.props }
 
                   // handlers
-                  onSetNewPostValue={ this.onSetNewPostValue }
                   onShowNewPostData={ this.onShowNewPostData }
                   setPostDate={ this.setPostDate }
                   setPostId={ this.setPostId }
-                  setPostValue={ this.setPostValue }
                 />
 
               }
@@ -154,6 +202,9 @@ class Main extends React.Component {
 
                   // handlers
                   onGetSenderId={ this.onGetSenderId }
+
+                  onShowNewMessagesData={ this.onShowNewMessagesData }
+                  setBlockMessageId={ this.setBlockMessageId }
                 />
 
               }

@@ -35,7 +35,9 @@ const Dialogs = (props) => {
                 // properties
                 userDataObj={ props.userDataObj }
                 filteredSenderData={ props.filteredSenderData }
-                { ...props }
+
+                onShowNewMessagesData={ props.onShowNewMessagesData }
+                setBlockMessageId={ props.setBlockMessageId }
               />
 
             }

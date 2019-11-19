@@ -2,6 +2,7 @@ import React from 'react';
 import './Messages.css';
 import MessagesItem from './MessagesItem';
 import MessagesEmpty from '../MessagesEmpty/MessagesEmpty';
+import MessagesField from '../MessagesField/MessagesField';
 
 const Messages = (props) => {
   const { userDataObj, filteredSenderData } = props;
@@ -24,8 +25,9 @@ const Messages = (props) => {
 
       <div className="Messages__content">
 
-        { !filteredSenderData &&
-          <MessagesEmpty />
+        { <MessagesEmpty /> &&
+          (!filteredSenderData ||
+          filteredSenderData.length === 0)
         }
 
         { filteredSenderData &&
@@ -44,6 +46,11 @@ const Messages = (props) => {
         }
 
       </div>
+
+      <MessagesField
+        onShowNewMessagesData={ props.onShowNewMessagesData }
+        setBlockMessageId={ props.setBlockMessageId }
+      />
 
     </React.Fragment>
 
