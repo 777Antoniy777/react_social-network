@@ -9,10 +9,12 @@ class Main extends React.Component {
   state = {
     userDataObj: null,
     filteredSenderData: null,
-    // filteredMessagesData: null,
     newPostData: {},
     newBlockMessageData: {},
+
+    newMessageDataArr: [],
     newMessageData: {},
+
     newPostsData: this.props.postsData,
     newMessagesData: this.props.messagesData,
   }
@@ -81,6 +83,19 @@ class Main extends React.Component {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Messages
   onGetSenderId = (userObj) => {
     this.setState({
@@ -99,65 +114,96 @@ class Main extends React.Component {
     });
   }
 
-  setBlockMessageId = () => {
-    const { filteredSenderData } = this.state;
-    let lastBlockMessageId;
+  setBlockMessageId = (messageArr) => {
+    let lastMessageId;
 
-    if (filteredSenderData.length === 0) {
-      lastBlockMessageId = 1;
-      return lastBlockMessageId;
+    if (messageArr.length === 0) {
+      lastMessageId = 1;
+      return lastMessageId;
     }
 
-    lastBlockMessageId = filteredSenderData[filteredSenderData.length - 1].id + 1;
-    return lastBlockMessageId;
+    lastMessageId = messageArr[messageArr.length - 1].id + 1;
+    return lastMessageId;
   }
 
-  onShowNewMessagesData = (idVal, mes) => {
-    const id = idVal();
-    let newBlockMessageData;
+  onShowNewMessageData = (mes) => {
+    const filteredSenderData = this.state.filteredSenderData;
+    const filteredMessagesData = filteredSenderData[filteredSenderData.length - 1].messages;
 
-    if (this.state.newBlockMessageData.messages.length >= 1) {
-      let testArr = this.state.newBlockMessageData.messages;
-      const testId = testArr[testArr - 1].id + 1;
-      testArr = testArr.push();
+    let mesId;
 
-      newBlockMessageData = {
-        id: id,
-        name: 'Anton Kuzmitsky',
-        avatar: '../../avatars/avatar-1.png',
-        messages: testArr,
-      };
+    if (filteredSenderData[filteredSenderData.length - 1].name !== 'Anton Kuzmitsky') {
+      mesId =  0;
     } else {
-      newBlockMessageData = {
-        id: id,
-        name: 'Anton Kuzmitsky',
-        avatar: '../../avatars/avatar-1.png',
-        messages: [
-          {
-            id: 1,
-            message: mes,
-          },
-        ],
-      };
-
-      // this.setState({
-      //   newBlockMessageData: newBlockMessageData,
-      // }, this.addNewMessage);
+      mesId = filteredMessagesData[filteredMessagesData.length - 1].id;
     }
+
+    const newMessageData = {
+      id: ++mesId,
+      message: mes,
+    };
+
+    this.setState({
+      newMessageData: newMessageData,
+    }, this.addNewMessageData);
+
+  }
+
+  // TEST
+  addNewMessageData() {
+    const { newMessageData, newMessageDataArr, filteredSenderData } = this.state;
+
+    if (filteredSenderData[filteredSenderData.length - 1].name === 'Anton Kuzmitsky' && newMessageData.message !== '') {
+      newMessageDataArr.push(newMessageData);
+    }
+
+    // if (newMessageData.message !== '') {
+    //   newMessageDataArr.push(newMessageData);
+    // }
+
+    this.setState({
+      newMessageDataArr: newMessageDataArr,
+    });
+  }
+  //
+
+  onShowNewMessagesData = (idVal, mes) => {
+    const filteredSenderData = this.state.filteredSenderData;
+    const id = idVal(filteredSenderData);
+
+    const newBlockMessageData = {
+      id: id,
+      name: 'Anton Kuzmitsky',
+      avatar: '../../avatars/avatar-1.png',
+      messages: [
+        {
+          id: 1,
+          message: mes,
+        },
+      ],
+    };
 
     this.setState({
       newBlockMessageData: newBlockMessageData,
-    }, this.addNewMessage);
+    }, this.addNewMessagesData);
 
   }
 
-  addNewMessage() {
-    const newMessagesArr = this.state.filteredSenderData;
+  addNewMessagesData() {
+    const { filteredSenderData, newBlockMessageData, newMessageData } = this.state;
 
-    if (this.state.newBlockMessageData.messages[this.state.newBlockMessageData.messages.length - 1].message !== '') newMessagesArr.push(this.state.newBlockMessageData);
+    if (newMessageData.message !== '') {
+
+      if (filteredSenderData[filteredSenderData.length - 1].name !== 'Anton Kuzmitsky') {
+        filteredSenderData.push(newBlockMessageData);
+      } else {
+        filteredSenderData[filteredSenderData.length - 1].messages.push(newMessageData);
+      }
+
+    }
 
     this.setState({
-      filteredSenderData: newMessagesArr,
+      filteredSenderData: filteredSenderData,
     });
   }
 
@@ -204,6 +250,7 @@ class Main extends React.Component {
                   onGetSenderId={ this.onGetSenderId }
 
                   onShowNewMessagesData={ this.onShowNewMessagesData }
+                  onShowNewMessageData={ this.onShowNewMessageData }
                   setBlockMessageId={ this.setBlockMessageId }
                 />
 

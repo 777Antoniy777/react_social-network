@@ -25,9 +25,9 @@ const Messages = (props) => {
 
       <div className="Messages__content">
 
-        { <MessagesEmpty /> &&
-          (!filteredSenderData ||
-          filteredSenderData.length === 0)
+        { (!filteredSenderData ||
+          filteredSenderData.length === 0) &&
+          <MessagesEmpty />
         }
 
         { filteredSenderData &&
@@ -49,6 +49,7 @@ const Messages = (props) => {
 
       <MessagesField
         onShowNewMessagesData={ props.onShowNewMessagesData }
+        onShowNewMessageData={ props.onShowNewMessageData }
         setBlockMessageId={ props.setBlockMessageId }
       />
 
