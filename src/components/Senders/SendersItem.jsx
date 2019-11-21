@@ -18,7 +18,7 @@ const SendersItem = (props) => {
   return (
 
     <li className="Senders__item" onClick={ senderClickHandler } >
-      <NavLink to={ `/dialogs/id${id}` }>
+      <NavLink to={ `/dialogs/id${id}` } >
 
         <img className="Senders__image" src={ src } width="46" height="46" alt={ user }/>
 

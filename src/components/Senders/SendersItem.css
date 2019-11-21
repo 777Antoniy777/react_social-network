@@ -8,6 +8,7 @@
 }
 
 .Senders__item a::before {
+  display: block;
   content: "";
   position: absolute;
   bottom: 0;
@@ -19,6 +20,10 @@
 }
 
 /* :hover */
+.Senders__item a:hover {
+  background-color: var(--senders-hover-bg);
+}
+
 .Senders__item:hover a::before {
   width: 100%;
 }
@@ -35,3 +40,18 @@
   font-size: 13px;
   line-height: 20px;
 }
+
+/* :active  */
+.Senders__item .active,
+.Senders__item .active:hover {
+  background-color: var(--senders-active-bg);
+}
+
+.Senders__item .active::before {
+  display: none;
+}
+
+.Senders__item .active .Senders__item-user {
+  color: var(--w);
+}
+

@@ -4,32 +4,101 @@ import About from '../About/About';
 import PostField from '../PostField/PostField';
 import Posts from '../Posts/Posts';
 
-const Profile = (props) => {
+class Profile extends React.Component {
+  state = {
+    newPostData: {},
+    newPostsData: this.props.postsData,
+  }
 
-  return (
+  setPostDate = () => {
+    const date = new Date();
+    const time = {};
+    const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    time.day = date.getDate();
+    time.month = date.getMonth();
+    time.hours = date.getHours();
 
-    <div className="Main__profile-wrapper">
-      <Preview previewCategories={ props.previewCategories } />
+    if (date.getMinutes() >= 0 && date.getMinutes() <= 9) {
+      time.minutes = `0${date.getMinutes()}`;
+    } else {
+      time.minutes = date.getMinutes();
+    }
 
-      <div className="Main__about-wrapper">
-        <About profileData={ props.profileData } />
+    const renamedMonth = monthArr.find((elem, index) => {
+      if (index === time.month) return index;
+      return false;
+    })
 
-        <div className="Main__comment-wrapper">
+    let res = `${time.day} ${renamedMonth} at ${time.hours}:${time.minutes}`;
+    if (time.hours <= 12) {
+      res = `${res} am`;
+    } else {
+      res = `${res} pm`;
+    }
 
-          <PostField
-            // handlers
-            onShowNewPostData={ props.onShowNewPostData }
-            setPostDate={ props.setPostDate }
-            setPostId={ props.setPostId }
-          />
+    return res;
+  }
 
-          <Posts newPostsData={ props.newPostsData } />
+  setPostId = () => {
+    const { newPostsData } = this.state;
+    const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
+
+    return lastPostId;
+  }
+
+  onShowNewPostData = (idVal, dateVal, newPostMes) => {
+    const date = dateVal();
+    const id = idVal();
+
+    const newPostData = {
+      id: id,
+      name: 'Anton Kuzmitsky',
+      avatar: 'avatars/avatar-1.png',
+      time: date,
+      text: newPostMes,
+    };
+
+    this.setState({
+      newPostData: newPostData,
+    }, this.addNewPostsData);
+  }
+
+  addNewPostsData() {
+    const postsArr = this.state.newPostsData;
+
+    if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
+
+    this.setState({
+      newPostsData: postsArr,
+    });
+  }
+
+  render() {
+    return (
+
+      <div className="Main__profile-wrapper">
+        <Preview previewCategories={ this.props.previewCategories } />
+
+        <div className="Main__about-wrapper">
+          <About profileData={ this.props.profileData } />
+
+          <div className="Main__comment-wrapper">
+
+            <PostField
+              // handlers
+              onShowNewPostData={ this.onShowNewPostData }
+              setPostDate={ this.setPostDate }
+              setPostId={ this.setPostId }
+            />
+
+            <Posts newPostsData={ this.state.newPostsData } />
+          </div>
+
         </div>
-
       </div>
-    </div>
 
-  );
+    );
+  }
 }
 
 export default Profile;

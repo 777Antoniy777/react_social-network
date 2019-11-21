@@ -17,10 +17,10 @@ class MessagesField extends React.Component {
 
   addNewMessage = (evt) => {
     evt.preventDefault();
-    const { onShowNewMessagesData, onShowNewMessageData, setBlockMessageId } = this.props;
+    const { onShowNewMessagesData, onShowNewMessageData, setBlockMessageId, setMessageId } = this.props;
 
     onShowNewMessagesData(setBlockMessageId, this.state.newMessageText);
-    onShowNewMessageData(this.state.newMessageText);
+    onShowNewMessageData(setMessageId, this.state.newMessageText);
 
     this.setState({
       newMessageText: '',

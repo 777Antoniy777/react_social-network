@@ -48,9 +48,11 @@ const Messages = (props) => {
       </div>
 
       <MessagesField
+        // handlers
         onShowNewMessagesData={ props.onShowNewMessagesData }
         onShowNewMessageData={ props.onShowNewMessageData }
         setBlockMessageId={ props.setBlockMessageId }
+        setMessageId={ props.setMessageId }
       />
 
     </React.Fragment>
