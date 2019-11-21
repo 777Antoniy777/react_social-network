@@ -5,49 +5,47 @@ import Sidebar from '../Sidebar/Sidebar';
 import Profile from '../general/Profile';
 import Dialogs from '../general/Dialogs';
 
-class Main extends React.Component {
-  
-  render() {
-    return (
+const Main = (props) => {
 
-      <main className="Main">
-        <div className="site-wrapper">
-          <Sidebar sidebarCategories={ this.props.sidebarCategories } />
+  return (
 
-            {/* Profile page */}
-            <Route
-              exact path="/"
-              render={ () =>
+    <main className="Main">
+      <div className="site-wrapper">
+        <Sidebar sidebarCategories={ props.sidebarCategories } />
 
-                <Profile
-                  // properties
-                  postsData={ this.props.postsData }
-                  previewCategories={ this.props.previewCategories }
-                  profileData={ this.props.profileData }
-                />
+          {/* Profile page */}
+          <Route
+            exact path="/"
+            render={ () =>
 
-              }
-            />
+              <Profile
+                // properties
+                postsData={ props.postsData }
+                previewCategories={ props.previewCategories }
+                profileData={ props.profileData }
+              />
 
-            {/* Dialogs page */}
-            <Route
-              path="/dialogs"
-              render={ () =>
+            }
+          />
 
-                <Dialogs
-                  // properties
-                  sendersData={ this.props.sendersData }
-                  messagesData={ this.props.messagesData }
-                />
+          {/* Dialogs page */}
+          <Route
+            path="/dialogs"
+            render={ () =>
 
-              }
-            />
+              <Dialogs
+                // properties
+                sendersData={ props.sendersData }
+                messagesData={ props.messagesData }
+              />
 
-        </div>
-      </main>
+            }
+          />
 
-    );
-  }
+      </div>
+    </main>
+
+  );
 }
 
 export default Main;
