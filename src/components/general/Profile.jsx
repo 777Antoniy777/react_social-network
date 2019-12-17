@@ -7,7 +7,7 @@ import Posts from '../Posts/Posts';
 class Profile extends React.Component {
   state = {
     newPostData: {},
-    newPostsData: this.props.postsData,
+    // newPostsData: this.props.postsData,
   }
 
   setPostDate = () => {
@@ -40,8 +40,12 @@ class Profile extends React.Component {
   }
 
   setPostId = () => {
-    const { newPostsData } = this.state;
-    const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
+    const { state } = this.props;
+    const postsData = state.postsData;
+    const lastPostId = postsData[postsData.length - 1].id + 1;
+
+    // const { newPostsData } = this.state;
+    // const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
 
     return lastPostId;
   }
@@ -58,19 +62,28 @@ class Profile extends React.Component {
       text: newPostMes,
     };
 
-    this.setState({
-      newPostData: newPostData,
-    }, this.addNewPostsData);
+    if (newPostData.text !== '') {
+      this.props.dispatch({
+        type: 'ADD_NEW_POSTS_DATA',
+        obj: newPostData,
+      });
+
+    // this.setState({
+    //   newPostData: newPostData,
+    // }, this.addNewPostsData);
+    }
+
+    return;
   }
 
   addNewPostsData() {
-    const postsArr = this.state.newPostsData;
+    // const postsArr = this.state.newPostsData;
 
-    if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
+    // if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
 
-    this.setState({
-      newPostsData: postsArr,
-    });
+    // this.setState({
+    //   newPostsData: postsArr,
+    // });
   }
 
   render() {
@@ -91,7 +104,7 @@ class Profile extends React.Component {
               setPostId={ this.setPostId }
             />
 
-            <Posts newPostsData={ this.state.newPostsData } />
+            <Posts state={ this.props.state } />
           </div>
 
         </div>

@@ -3,7 +3,8 @@ import './Posts.css';
 import PostsItem from './PostsItem';
 
 const Posts = (props) => {
-  const { newPostsData } = props;
+  const { state } = props;
+  const postsData = state.postsData;
 
   return (
 
@@ -12,8 +13,8 @@ const Posts = (props) => {
 
       <ul className="Posts__list">
 
-        { newPostsData &&
-          newPostsData.map((elem) =>
+        { postsData &&
+          postsData.map((elem) =>
 
             <PostsItem
               // properties
