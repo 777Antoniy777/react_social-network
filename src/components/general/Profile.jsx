@@ -1,15 +1,11 @@
 import React from 'react';
+import { connect } from "react-redux";
 import Preview from '../Preview/Preview';
 import About from '../About/About';
 import PostField from '../PostField/PostField';
 import Posts from '../Posts/Posts';
 
 class Profile extends React.Component {
-  state = {
-    newPostData: {},
-    // newPostsData: this.props.postsData,
-  }
-
   setPostDate = () => {
     const date = new Date();
     const time = {};
@@ -25,7 +21,7 @@ class Profile extends React.Component {
     }
 
     const renamedMonth = monthArr.find((elem, index) => {
-      if (index === time.month) return index;
+      if (index === time.month) return true;
       return false;
     })
 
@@ -40,17 +36,14 @@ class Profile extends React.Component {
   }
 
   setPostId = () => {
-    const { state } = this.props;
-    const postsData = state.postsData;
-    const lastPostId = postsData[postsData.length - 1].id + 1;
-
-    // const { newPostsData } = this.state;
-    // const lastPostId = newPostsData[newPostsData.length - 1].id + 1;
+    const { postsState } = this.props;
+    const lastPostId = postsState[postsState.length - 1].id + 1;
 
     return lastPostId;
   }
 
-  onShowNewPostData = (idVal, dateVal, newPostMes) => {
+  addNewPostsData = (idVal, dateVal, newPostMes) => {
+    const { onAddPost } = this.props;
     const date = dateVal();
     const id = idVal();
 
@@ -63,27 +56,10 @@ class Profile extends React.Component {
     };
 
     if (newPostData.text !== '') {
-      this.props.dispatch({
-        type: 'ADD_NEW_POSTS_DATA',
-        obj: newPostData,
-      });
+      onAddPost(newPostData);
 
-    // this.setState({
-    //   newPostData: newPostData,
-    // }, this.addNewPostsData);
+      return;
     }
-
-    return;
-  }
-
-  addNewPostsData() {
-    // const postsArr = this.state.newPostsData;
-
-    // if (this.state.newPostData.text !== '') postsArr.push(this.state.newPostData);
-
-    // this.setState({
-    //   newPostsData: postsArr,
-    // });
   }
 
   render() {
@@ -99,7 +75,7 @@ class Profile extends React.Component {
 
             <PostField
               // handlers
-              onShowNewPostData={ this.onShowNewPostData }
+              addNewPostsData={ this.addNewPostsData }
               setPostDate={ this.setPostDate }
               setPostId={ this.setPostId }
             />
@@ -114,4 +90,16 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default connect(
+  state => ({
+    postsState: state.posts,
+  }),
+  dispatch => ({
+    onAddPost: (newPostData) => {
+      dispatch({
+        type: 'ADD_NEW_POSTS_DATA',
+        obj: newPostData,
+      });
+    },
+  }),
+)(Profile);

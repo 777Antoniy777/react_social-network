@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from "react-redux";
 import './Posts.css';
 import PostsItem from './PostsItem';
 
 const Posts = (props) => {
-  const { state } = props;
-  const postsData = state.postsData;
+  const { postsState } = props;
 
   return (
 
@@ -13,8 +13,8 @@ const Posts = (props) => {
 
       <ul className="Posts__list">
 
-        { postsData &&
-          postsData.map((elem) =>
+        { postsState &&
+          postsState.map((elem) =>
 
             <PostsItem
               // properties
@@ -35,4 +35,8 @@ const Posts = (props) => {
   );
 }
 
-export default Posts;
+export default connect(
+  state => ({
+    postsState: state.posts,
+  }),
+)(Posts);

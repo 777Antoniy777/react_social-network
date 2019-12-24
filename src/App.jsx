@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 
@@ -190,7 +189,7 @@ class App extends React.Component {
   render() {
     return (
 
-      <BrowserRouter>
+      <React.Fragment>
 
         <Header />
         <Main
@@ -198,16 +197,11 @@ class App extends React.Component {
           sidebarCategories={ this.state.sidebarCategories }
           previewCategories={ this.state.previewCategories }
           profileData={ this.state.profileData }
-          // postsData={ this.state.postsData }
           sendersData={ this.state.sendersData }
           messagesData={ this.state.messagesData }
-
-          // test
-          state={ this.props.state }
-          dispatch={ this.props.dispatch }
         />
 
-      </BrowserRouter>
+      </React.Fragment>
 
     );
   }

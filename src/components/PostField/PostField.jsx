@@ -18,9 +18,9 @@ class PostField extends React.Component {
 
   showNewPostsData = (evt) => {
     evt.preventDefault();
-    const { onShowNewPostData, setPostId, setPostDate } = this.props;
+    const { addNewPostsData, setPostId, setPostDate } = this.props;
 
-    onShowNewPostData(setPostId, setPostDate, this.state.newPostMes);
+    addNewPostsData(setPostId, setPostDate, this.state.newPostMes);
 
     this.setState({
       newPostMes: '',

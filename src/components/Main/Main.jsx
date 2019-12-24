@@ -20,13 +20,8 @@ const Main = (props) => {
 
               <Profile
                 // properties
-                // postsData={ props.postsData }
                 previewCategories={ props.previewCategories }
                 profileData={ props.profileData }
-
-                // test
-                state={ props.state }
-                dispatch={ props.dispatch }
               />
 
             }
