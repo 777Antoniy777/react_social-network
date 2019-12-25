@@ -2,7 +2,7 @@ import React from 'react';
 import './AboutItem.css';
 
 const AboutItem = (props) => {
-  const { cat, text } = props;
+  const { cat, body } = props;
 
   return (
 
@@ -10,7 +10,7 @@ const AboutItem = (props) => {
       <span>{ cat }</span>
 
       <a href="#s">
-        { text }
+        { body }
       </a>
     </div>
 

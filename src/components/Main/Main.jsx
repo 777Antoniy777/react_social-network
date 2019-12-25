@@ -18,11 +18,7 @@ const Main = (props) => {
             exact path="/"
             render={ () =>
 
-              <Profile
-                // properties
-                previewCategories={ props.previewCategories }
-                profileData={ props.profileData }
-              />
+              <Profile />
 
             }
           />

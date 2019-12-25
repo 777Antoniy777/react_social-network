@@ -2,7 +2,7 @@ import React from 'react';
 import './PostsItem.css';
 
 const PostsItem = (props) => {
-  const { avatar, name, time, message } = props;
+  const { avatar, name, time, body } = props;
 
   return (
 
@@ -27,7 +27,7 @@ const PostsItem = (props) => {
         </div>
       </div>
 
-      <p className="Posts__description">{ message }</p>
+      <p className="Posts__description">{ body }</p>
 
     </li>
 

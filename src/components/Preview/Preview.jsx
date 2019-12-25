@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from "react-redux";
 import './Preview.css';
-import img from '../../img/avatar-1.png';
 import PreviewNavItem from './PreviewNavItem';
+import img from '../../img/avatar-1.png';
 
 const Preview = (props) => {
-  const { previewCategories } = props;
+  const { previewState } = props;
 
   return (
 
@@ -20,13 +21,13 @@ const Preview = (props) => {
         <nav className="Preview__nav">
           <ul className="Preview__list">
 
-            { previewCategories &&
-              previewCategories.map((elem) =>
+            { previewState &&
+              previewState.map((elem) =>
 
                 <PreviewNavItem
                   // properties
                   key={ elem.id }
-                  cat={ elem.name }
+                  cat={ elem.cat }
                   link={ elem.link }
                   amount={ elem.amount }
                 />
@@ -42,4 +43,8 @@ const Preview = (props) => {
   );
 }
 
-export default Preview;
+export default connect(
+  state => ({
+    previewState: state.preview,
+  }),
+)(Preview);

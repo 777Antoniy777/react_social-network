@@ -1,22 +1,24 @@
 import React from 'react';
+import { connect } from "react-redux";
 import './About.css';
 import AboutItem from './AboutItem';
 
 const About = (props) => {
-  const { profileData } = props;
+  const { profileState } = props;
 
   return (
 
     <address className="About">
       <h2 className="visually-hidden">About me</h2>
 
-      { profileData &&
-        profileData.map((elem) =>
+      { profileState &&
+        profileState.map((elem) =>
 
           <AboutItem
+            // properties
             key={ elem.id }
             cat={ elem.cat }
-            text={ elem.text }
+            body={ elem.body }
           />
 
         )
@@ -27,4 +29,8 @@ const About = (props) => {
   );
 }
 
-export default About;
+export default connect(
+  state => ({
+    profileState: state.profile,
+  }),
+)(About);

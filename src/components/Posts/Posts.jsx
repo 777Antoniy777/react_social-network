@@ -22,7 +22,7 @@ const Posts = (props) => {
               name={ elem.name }
               time={ elem.time }
               avatar={ elem.avatar }
-              message={ elem.text }
+              body={ elem.body }
             />
 
           )
